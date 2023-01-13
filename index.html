@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Countries</title>
-    <!-- fonts -->  
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
     <!-- bootstrap icons-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" />
@@ -18,6 +19,26 @@
 </head>
 
 <body class="light">
+    <div class="modal-wrapper d-none">
+        <div class="countries-modal py-4 ps-4 d-flex">
+            <button class="modal-btn">
+                <i class="bi bi-x-lg"></i>
+            </button>
+            <div class="modal-left w-50">
+                <h2 class="modal-title mb-4"></h2>
+                <img class="modal-img" src="" alt="flag">
+            </div>
+            <div class="modal-right w-50 py-5 ps-3">
+                <p class="fs-6"><i class="bi bi-globe-americas"></i> Region: &nbsp;<span class="js-modal-region"></span></p>
+                <p class="fs-6"><i class="bi bi-geo-fill"></i> Subregion: &nbsp;<span class="js-modal-subregion"></span></p>
+                <p class="fs-6"><i class="bi bi-geo-alt-fill"></i> Capital: &nbsp;<span class="js-modal-capital"></span></p>
+                <p class="fs-6"><i class="bi bi-people"></i> Population: &nbsp;<span class="js-modal-population"></span></p>
+                <p class="fs-6"><i class="bi bi-globe2"></i> Language: &nbsp;<span class="js-modal-lang"></span></p>
+                <p class="fs-6"><i class="bi bi-clock"></i> Time: &nbsp;<span class="js-modal-time"></span></p>
+            </div>
+            <a class="btn-map" href="" target="_blank">Google Maps</a>
+        </div>
+    </div>
     <header class="header shadow">
         <div class="container">
             <div class="row d-flex justify-content-between">
@@ -32,10 +53,12 @@
     </header>
 
     <main>
+
         <div class="container my-5">
             <div class="row">
                 <form class="form d-flex justify-content-between">
-                    <input class="search form-control w-25 shadow js-search" type="search" name="search" placeholder="Search">
+                    <input class="search form-control w-25 shadow js-search" type="search" name="search"
+                        placeholder="Search">
                     <select class="select form-control w-25 shadow" name="select" id="select">
                         <option value="All region" selected> All Region</option>
                         <option value="Americas">Americas</option>
@@ -51,8 +74,123 @@
 
         <section class="regions">
             <div class="container">
-                <div class="row js-wrapper mx-auto d-flex flex-wrap column-gap-3 row-gap-5 pt-4 justify-content-between">
-           
+                <div
+                    class="row js-wrapper mx-auto d-flex flex-wrap column-gap-3 row-gap-5 pt-4 justify-content-between">
+                    <?xml version="1.0" encoding="utf-8"?>
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: rgba(241, 242, 243, 0); display: block; shape-rendering: auto;
+                    " width="100px" height="100px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+                        <g transform="rotate(0 50 50)">
+                            <rect x="45" y="6" rx="5" ry="5" width="10" height="10">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.2658227848101264s"
+                                    begin="-1.1954992967651195s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g>
+                        <g transform="rotate(20 50 50)">
+                            <rect x="45" y="6" rx="5" ry="5" width="10" height="10">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.2658227848101264s"
+                                    begin="-1.1251758087201125s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g>
+                        <g transform="rotate(40 50 50)">
+                            <rect x="45" y="6" rx="5" ry="5" width="10" height="10">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.2658227848101264s"
+                                    begin="-1.0548523206751055s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g>
+                        <g transform="rotate(60 50 50)">
+                            <rect x="45" y="6" rx="5" ry="5" width="10" height="10">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.2658227848101264s"
+                                    begin="-0.9845288326300984s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g>
+                        <g transform="rotate(80 50 50)">
+                            <rect x="45" y="6" rx="5" ry="5" width="10" height="10">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.2658227848101264s"
+                                    begin="-0.9142053445850914s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g>
+                        <g transform="rotate(100 50 50)">
+                            <rect x="45" y="6" rx="5" ry="5" width="10" height="10">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.2658227848101264s"
+                                    begin="-0.8438818565400843s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g>
+                        <g transform="rotate(120 50 50)">
+                            <rect x="45" y="6" rx="5" ry="5" width="10" height="10">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.2658227848101264s"
+                                    begin="-0.7735583684950773s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g>
+                        <g transform="rotate(140 50 50)">
+                            <rect x="45" y="6" rx="5" ry="5" width="10" height="10">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.2658227848101264s"
+                                    begin="-0.7032348804500703s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g>
+                        <g transform="rotate(160 50 50)">
+                            <rect x="45" y="6" rx="5" ry="5" width="10" height="10">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.2658227848101264s"
+                                    begin="-0.6329113924050632s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g>
+                        <g transform="rotate(180 50 50)">
+                            <rect x="45" y="6" rx="5" ry="5" width="10" height="10">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.2658227848101264s"
+                                    begin="-0.5625879043600562s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g>
+                        <g transform="rotate(200 50 50)">
+                            <rect x="45" y="6" rx="5" ry="5" width="10" height="10">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.2658227848101264s"
+                                    begin="-0.4922644163150492s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g>
+                        <g transform="rotate(220 50 50)">
+                            <rect x="45" y="6" rx="5" ry="5" width="10" height="10">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.2658227848101264s"
+                                    begin="-0.42194092827004215s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g>
+                        <g transform="rotate(240 50 50)">
+                            <rect x="45" y="6" rx="5" ry="5" width="10" height="10">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.2658227848101264s"
+                                    begin="-0.35161744022503516s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g>
+                        <g transform="rotate(260 50 50)">
+                            <rect x="45" y="6" rx="5" ry="5" width="10" height="10">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.2658227848101264s"
+                                    begin="-0.2812939521800281s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g>
+                        <g transform="rotate(280 50 50)">
+                            <rect x="45" y="6" rx="5" ry="5" width="10" height="10">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.2658227848101264s"
+                                    begin="-0.21097046413502107s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g>
+                        <g transform="rotate(300 50 50)">
+                            <rect x="45" y="6" rx="5" ry="5" width="10" height="10">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.2658227848101264s"
+                                    begin="-0.14064697609001406s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g>
+                        <g transform="rotate(320 50 50)">
+                            <rect x="45" y="6" rx="5" ry="5" width="10" height="10">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.2658227848101264s"
+                                    begin="-0.07032348804500703s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g>
+                        <g transform="rotate(340 50 50)">
+                            <rect x="45" y="6" rx="5" ry="5" width="10" height="10">
+                                <animate attributeName="opacity" values="1;0" keyTimes="0;1" dur="1.2658227848101264s"
+                                    begin="0s" repeatCount="indefinite"></animate>
+                            </rect>
+                        </g>
+                       <!-- loading -->
+                    </svg>
+
+
                 </div>
             </div>
         </section>
@@ -64,13 +202,18 @@
             <img class="flag-img" src="" alt="">
             <h3 class="item-title ps-2 my-2"></h3>
             <ul class="list mt-3 ps-2">
-                <li class="list-item py-1"><i class="bi bi-people"></i> Population: &nbsp;<span class="js-population"></span></li>
-                <li class="list-item py-1"><i class="bi bi-globe-americas"></i> Region: &nbsp;<span class="js-region"></span></li>
-                <li class="list-item py-1"><i class="bi bi-geo-alt-fill"></i> Capital: &nbsp;<span class="js-capital"></span></li>
+                <li class="list-item py-1"><i class="bi bi-people"></i> Population: &nbsp;<span
+                        class="js-population"></span></li>
+                <li class="list-item py-1"><i class="bi bi-globe-americas"></i> Region: &nbsp;<span
+                        class="js-region"></span></li>
+                <li class="list-item py-1"><i class="bi bi-geo-alt-fill"></i> Capital: &nbsp;<span
+                        class="js-capital"></span></li>
             </ul>
             <button class="btn bg-transparnet mb-2 ms-2 p-2 js-more-btn">More info</button>
         </div>
     </template>
+
+
 
     <script src="js/main.js"></script>
 </body>

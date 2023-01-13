@@ -104,3 +104,135 @@ header{
 .list{
     list-style-type: none;
 }
+
+
+/* loading */
+svg{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 444;
+    width: 100px;
+}
+
+rect{
+    animation: svgAnime 15s linear infinite;
+}
+
+
+@keyframes svgAnime {
+    0%{
+      fill:  rgb(119, 255, 0);
+    }
+
+    15%{
+       fill:  rgb(0, 255, 234);
+    }
+    25%{
+       fill:  rgb(0, 157, 255);
+    }
+    35%{
+       fill:  rgb(212, 0, 255);
+    }
+    45%{
+    
+       fill:  rgb(255, 0, 0);
+    }
+    55%{
+       fill:  rgb(255, 234, 0);
+    }
+    65%{
+       fill:  rgb(0, 255, 30);
+    }
+    75%{
+       fill:  rgb(0, 255, 162);
+
+    }
+    85%{
+       fill:  rgb(0, 174, 255);
+    }
+    94%{
+       fill: rgb(255, 0, 204);
+    }
+    100%{
+       fill:  rgb(119, 255, 0);
+    }
+}
+
+/* modal */
+.modal-wrapper{
+    position: fixed;
+    z-index: 99999;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.468);
+}
+
+.dark .countries-modal{
+    color: #fff;
+    background-color: #000000;
+}
+.light .countries-modal{
+    color: #000;
+    background-color: #ececec;
+}
+
+.countries-modal{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 680px;
+    height: 350px;
+    border-radius: 8px;
+}
+
+.modal-right{
+    padding-top: 50px !important;
+}
+
+.modal-btn{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 0 8px 0;
+    border: none;
+    background-color: rgb(226, 79, 79);
+    color: #fff;
+    transition: all .3s ease;
+}
+.modal-btn:hover{
+    background-color: rgba(226, 79, 79, 0.803);  
+}
+
+.btn-map{
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    height: 40px;
+    width: 120px;
+    border-radius: 8px;
+    background-color: #5f9ea0;
+    color: #fff;
+    border: none;
+    box-shadow: 0 0 5px #5f9ea0;
+    transition: all .3s ease;
+    text-decoration: none;
+    padding: 8px 0;
+    text-align: center;
+}
+.btn-map:hover{
+    opacity: 0.8;
+}
+
+.modal-img{
+    width: 300px;
+    height: 180px;
+}

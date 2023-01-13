@@ -39,10 +39,11 @@ changeTheme();
 async function countriesRender(url){
     const response = await fetch(url);
     const data = await response.json();
-
+    
     let  newId=0;
-
+    
     data.forEach((element) => {
+
         elWrapper.innerHTML='';
         newId++
         let newTemplate = itemTemplate.cloneNode(true);
@@ -62,7 +63,7 @@ async function countriesRender(url){
     }
     
     
-    ;countriesRender(countriesAll);
+    countriesRender(countriesAll);
 
 // sort
 elSelect.addEventListener('change', (evt=>{
@@ -84,4 +85,67 @@ elInputSearch.addEventListener('input', (evt)=>{
     else if(elInputSearch.value == ''){
         countriesRender(countriesAll);
     }
+})
+
+// more info
+
+const elModal = document.querySelector('.modal-wrapper');
+const elModalWrapper = document.querySelector('.countries-modal');
+const elModalTitle = document.querySelector('.modal-title');
+const elModalImg = document.querySelector('.modal-img');
+const region = document.querySelector('.js-modal-region');
+const subregion = document.querySelector('.js-modal-subregion');
+const capital= document.querySelector('.js-modal-capital');
+const population = document.querySelector('.js-modal-population');
+const language = document.querySelector('.js-modal-lang');
+const time = document.querySelector('.js-modal-time');
+const map = document.querySelector('.btn-map');
+const closeBtn = document.querySelector('.modal-btn');
+
+
+async function modalRender(url){
+    const response = await fetch(url);
+    const data = await response.json();
+    
+    let times = new Date();
+    let hours = times.getUTCHours();
+    let minutes = times.getMinutes();
+
+    data.forEach((item) => {
+        
+        elModalTitle.textContent = item.name.common;
+        elModalImg.src = item.flags.svg;
+        region.textContent = item.region;
+        subregion.textContent = item.subregion;
+        capital.textContent = item.capital;
+        population.textContent = item.population.toLocaleString();
+        language.textContent = `${Object.values(item.languages)}`;
+        if(item.timezones.length > 1){
+            let timesHours= +(item.timezones[1].split('UTC')[1].split('0')[0]+item.timezones[1].split('UTC')[1].split('0')[1]).split(':')[0];
+            time.textContent = `${hours + timesHours}:${minutes}`;
+        }else if(item.timezones.length = 1){
+            let timesHours = +(item.timezones.toString().split("UTC")[1].split('0')[0]+item.timezones.toString().split("UTC")[1].split('0')[1]).split(":")[0];
+            time.textContent = `${hours + timesHours}:${minutes}`;
+        }
+    
+        map.href = item.maps.googleMaps;
+    });
+    }
+    
+
+elWrapper.addEventListener('click', (evt)=>{
+    if(evt.target.matches('.js-more-btn')){
+       if(evt.target.dataset.btnId == evt.target.parentNode.id){
+        elModal.classList.remove('d-none');
+        elModal.classList.add('d-block');
+        console.log(evt.target.previousElementSibling);
+        let capital = evt.target.previousElementSibling.previousElementSibling.textContent;
+        modalRender("https://restcountries.com/v3.1/name/"+capital);
+       };
+    };
+})
+
+closeBtn.addEventListener('click', (evt)=>{
+    elModal.classList.remove('d-block');
+    elModal.classList.add('d-none');
 })
