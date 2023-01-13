@@ -42,27 +42,27 @@ async function countriesRender(url){
 
     let  newId=0;
 
-        data.forEach((element) => {
-            elWrapper.innerHTML='';
-            newId++
-            let newTemplate = itemTemplate.cloneNode(true);
-            newTemplate.querySelector('.flag-img').src = element.flags.svg;
-            newTemplate.querySelector('.flag-img').alt = element.name.common;
-            newTemplate.querySelector('.item-title').textContent = element.name.common;
-            newTemplate.querySelector('.js-population').textContent = element.population.toLocaleString();
-            newTemplate.querySelector('.js-region').textContent = element.region;
-            newTemplate.querySelector('.js-capital').textContent = element.capital; 
-            newTemplate.querySelector('.js-card').id = newId; 
-            newTemplate.querySelector('.js-more-btn').dataset.btnId=newId;
-            fragment.appendChild(newTemplate);
+    data.forEach((element) => {
+        elWrapper.innerHTML='';
+        newId++
+        let newTemplate = itemTemplate.cloneNode(true);
+        newTemplate.querySelector('.flag-img').src = element.flags.svg;
+        newTemplate.querySelector('.flag-img').alt = element.name.common;
+        newTemplate.querySelector('.item-title').textContent = element.name.common;
+        newTemplate.querySelector('.js-population').textContent = element.population.toLocaleString();
+        newTemplate.querySelector('.js-region').textContent = element.region;
+        newTemplate.querySelector('.js-capital').textContent = element.capital; 
+        newTemplate.querySelector('.js-card').id = newId; 
+        newTemplate.querySelector('.js-more-btn').dataset.btnId=newId;
+        fragment.appendChild(newTemplate);
 
-        });
+    });
 
-        elWrapper.appendChild(fragment)
+    elWrapper.appendChild(fragment)
     }
     
     
-    countriesRender(countriesAll);
+    ;countriesRender(countriesAll);
 
 // sort
 elSelect.addEventListener('change', (evt=>{
@@ -75,7 +75,13 @@ elSelect.addEventListener('change', (evt=>{
     
 }))    
 
-
 // search
 
-elInputSearch.addEventListener('')
+elInputSearch.addEventListener('input', (evt)=>{
+    if(elInputSearch.value != ''){
+        countriesRender("https://restcountries.com/v3.1/name/"+elInputSearch.value);
+    }
+    else if(elInputSearch.value == ''){
+        countriesRender(countriesAll);
+    }
+})
