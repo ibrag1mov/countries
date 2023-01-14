@@ -1,5 +1,4 @@
 const darkMode = document.querySelector('.dark-mode');
-const header = document.querySelector('.header');
 const itemTemplate = document.querySelector('.template').content;
 const elWrapper = document.querySelector('.js-wrapper');
 const elSelect =document.querySelector('.select');
@@ -39,13 +38,14 @@ changeTheme();
 async function countriesRender(url){
     const response = await fetch(url);
     const data = await response.json();
+
+    // console.log(data);
     
-    let  newId=0;
     
     data.forEach((element) => {
 
         elWrapper.innerHTML='';
-        newId++
+
         let newTemplate = itemTemplate.cloneNode(true);
         newTemplate.querySelector('.flag-img').src = element.flags.svg;
         newTemplate.querySelector('.flag-img').alt = element.name.common;
@@ -53,8 +53,8 @@ async function countriesRender(url){
         newTemplate.querySelector('.js-population').textContent = element.population.toLocaleString();
         newTemplate.querySelector('.js-region').textContent = element.region;
         newTemplate.querySelector('.js-capital').textContent = element.capital; 
-        newTemplate.querySelector('.js-card').id = newId; 
-        newTemplate.querySelector('.js-more-btn').dataset.btnId=newId;
+        newTemplate.querySelector('.js-card').id = element.capital; 
+        newTemplate.querySelector('.js-more-btn').dataset.btnId=element.capital;
         fragment.appendChild(newTemplate);
 
     });
@@ -110,6 +110,7 @@ async function modalRender(url){
     let times = new Date();
     let hours = times.getUTCHours();
     let minutes = times.getMinutes();
+   
 
     data.forEach((item) => {
         
@@ -120,12 +121,133 @@ async function modalRender(url){
         capital.textContent = item.capital;
         population.textContent = item.population.toLocaleString();
         language.textContent = `${Object.values(item.languages)}`;
+
+
+        
+        
         if(item.timezones.length > 1){
-            let timesHours= +(item.timezones[1].split('UTC')[1].split('0')[0]+item.timezones[1].split('UTC')[1].split('0')[1]).split(':')[0];
-            time.textContent = `${hours + timesHours}:${minutes}`;
+            let timesHours = +(item.timezones[1].toString().split('UTC')[1].split(":00")[0]);
+            let newhours = hours+Math.trunc(timesHours);
+            if(newhours<0){
+                newhours = 24+newhours;
+                if(newhours < 10  && minutes < 10){
+                    newhours = "0"+newhours;
+                    minutes = "0" + minutes;
+                    time.textContent = (newhours+":"+minutes);
+                } 
+                else if(newhours < 10  && minutes >= 10){
+                    newhours = "0"+newhours;
+                    time.textContent = (newhours+":"+minutes);
+                }
+                else if(newhours >= 10  && minutes < 10){
+                    minutes = "0" + minutes;
+                    time.textContent = (newhours+":"+minutes);
+                }
+                else if(newhours >= 10  && minutes >= 10){
+                    time.textContent = (newhours+":"+minutes);
+                }
+            }
+            else{
+                if(newhours < 10  && minutes < 10){
+                    newhours = "0"+newhours;
+                    minutes = "0" + minutes;
+                    time.textContent = (newhours+":"+minutes);
+                } 
+                else if(newhours < 10  && minutes >= 10){
+                    newhours = "0"+newhours;
+                    time.textContent = (newhours+":"+minutes);
+                }
+                else if(newhours >= 10  && minutes < 10){
+                    minutes = "0" + minutes;
+                    time.textContent = (newhours+":"+minutes);
+                }
+                else if(newhours >= 10  && minutes >= 10){
+                    time.textContent = (newhours+":"+minutes);
+                }
+            }
+            
+
+        }else if(item.timezones.length > 2){
+            let timesHours = +(item.timezones[2].toString().split('UTC')[1].split(":00")[0]);
+            let newhours = hours+Math.trunc(timesHours);
+            if(newhours<0){
+                newhours = 24+newhours;
+                if(newhours < 10  && minutes < 10){
+                    newhours = "0"+newhours;
+                    minutes = "0" + minutes;
+                    time.textContent = (newhours+":"+minutes);
+                } 
+                else if(newhours < 10  && minutes >= 10){
+                    newhours = "0"+newhours;
+                    time.textContent = (newhours+":"+minutes);
+                }
+                else if(newhours >= 10  && minutes < 10){
+                    minutes = "0" + minutes;
+                    time.textContent = (newhours+":"+minutes);
+                }
+                else if(newhours >= 10  && minutes >= 10){
+                    time.textContent = (newhours+":"+minutes);
+                }
+            }
+            else{
+                if(newhours < 10  && minutes < 10){
+                    newhours = "0"+newhours;
+                    minutes = "0" + minutes;
+                    time.textContent = (newhours+":"+minutes);
+                } 
+                else if(newhours < 10  && minutes >= 10){
+                    newhours = "0"+newhours;
+                    time.textContent = (newhours+":"+minutes);
+                }
+                else if(newhours >= 10  && minutes < 10){
+                    minutes = "0" + minutes;
+                    time.textContent = (newhours+":"+minutes);
+                }
+                else if(newhours >= 10  && minutes >= 10){
+                    time.textContent = (newhours+":"+minutes);
+                }
+            }
+            
         }else if(item.timezones.length = 1){
-            let timesHours = +(item.timezones.toString().split("UTC")[1].split('0')[0]+item.timezones.toString().split("UTC")[1].split('0')[1]).split(":")[0];
-            time.textContent = `${hours + timesHours}:${minutes}`;
+            let timesHours = +(item.timezones.toString().split('UTC')[1].split(":00")[0]);
+            let newhours = hours+Math.trunc(timesHours);
+            if(newhours<0){
+                newhours = 24+newhours;
+                if(newhours < 10  && minutes < 10){
+                    newhours = "0"+newhours;
+                    minutes = "0" + minutes;
+                    time.textContent = (newhours+":"+minutes);
+                } 
+                else if(newhours < 10  && minutes >= 10){
+                    newhours = "0"+newhours;
+                    time.textContent = (newhours+":"+minutes);
+                }
+                else if(newhours >= 10  && minutes < 10){
+                    minutes = "0" + minutes;
+                    time.textContent = (newhours+":"+minutes);
+                }
+                else if(newhours >= 10  && minutes >= 10){
+                    time.textContent = (newhours+":"+minutes);
+                }
+            }else{
+                if(newhours < 10  && minutes < 10){
+                    newhours = "0"+newhours;
+                    minutes = "0" + minutes;
+                    time.textContent = (newhours+":"+minutes);
+                } 
+                else if(newhours < 10  && minutes >= 10){
+                    newhours = "0"+newhours;
+                    time.textContent = (newhours+":"+minutes);
+                }
+                else if(newhours >= 10  && minutes < 10){
+                    minutes = "0" + minutes;
+                    time.textContent = (newhours+":"+minutes);
+                }
+                else if(newhours >= 10  && minutes >= 10){
+                    time.textContent = (newhours+":"+minutes);
+                }
+            }
+            
         }
     
         map.href = item.maps.googleMaps;
@@ -135,13 +257,15 @@ async function modalRender(url){
 
 elWrapper.addEventListener('click', (evt)=>{
     if(evt.target.matches('.js-more-btn')){
-       if(evt.target.dataset.btnId == evt.target.parentNode.id){
-        elModal.classList.remove('d-none');
-        elModal.classList.add('d-block');
-        console.log(evt.target.previousElementSibling);
-        let capital = evt.target.previousElementSibling.previousElementSibling.textContent;
-        modalRender("https://restcountries.com/v3.1/name/"+capital);
-       };
+        if(evt.target.dataset.btnId == evt.target.parentNode.id){
+            elModal.classList.remove('d-none');
+            elModal.classList.add('d-block');
+
+           let capital = evt.target.dataset.btnId;
+
+           modalRender("https://restcountries.com/v3.1/capital/"+capital)
+        }
+
     };
 })
 
