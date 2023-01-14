@@ -278,11 +278,12 @@ rect{
         width: 100%;
         height: 100vh !important;
         display:  block !important;
-        padding: 40px 20px !important;
+        padding: 10px 20px !important;
     }
     .modal-btn{
         width: 50px;
         border-radius:  0 0 0 8px ;
+     
     }
     .modal-left,
     .modal-right{
@@ -290,12 +291,15 @@ rect{
     }
     .modal-img{
         display: block;
-        margin: 0 auto;
-        width: 80%;
+        /* margin: 0 auto; */
+        width: 70%;
         height: 27%;
     }
     .modal-right{
         padding: 40px 5px !important;
+    }
+    .btn-map{
+        bottom: 50px !important;
     }
 }
 @media only screen and (max-width: 375px) {
@@ -325,6 +329,7 @@ rect{
     .search, .select{
         width: 100% !important;
         margin-bottom: 15px !important;
+        padding: 10px;
     }
     .select {
         margin-bottom: 0 !important;
